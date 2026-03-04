@@ -48,6 +48,11 @@ const router = createRouter({
       name: 'job-application',
       component: () => import('../modules/applications/views/ApplicationView.vue'),
     },
+    {
+      path: '/todos',
+      name: 'todo-list',
+      component: () => import('../modules/todos/views/TodosView.vue'),
+    },
   ],
 })
 
