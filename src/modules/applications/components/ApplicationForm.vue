@@ -32,36 +32,18 @@
       @validate="validateField"
     />
 
-    <fieldset class="mb-4 border p-4 rounded bg-light">
-      <legend class="w-auto px-3 fw-bold text-primary h5">Job Preferences</legend>
-      <div class="row">
-        <div class="col-md-6">
-          <label for="job_category" class="form-label fw-bold">Preferred Job Category *</label>
-          <select
-            id="job_category"
-            name="job_category"
-            v-model="form.category"
-            @change="validateField('category')"
-            class="form-select"
-            :class="{ 'is-invalid': errors.category }"
-          >
-            <option value="" disabled>-- Please select --</option>
-            <option value="AI">Artificial Intelligence</option>
-            <option value="Data Science">Data Science</option>
-            <option value="Web Development">Web Development</option>
-            <option value="Cybersecurity">Cybersecurity</option>
-          </select>
-          <div class="invalid-feedback">{{ errors.category }}</div>
-        </div>
-      </div>
-    </fieldset>
+    <FieldsetPreferences
+      v-model:category="form.category"
+      :errors="errors"
+      @validate="validateField"
+    />
 
     <div class="mb-4 p-3 border rounded bg-white">
-      <button type="button" class="btn btn-outline-secondary btn-sm mb-2" @click="toggleTerms">
+      <button type="button" class="btn btn-outline-secondary btn-sm" @click="toggleTerms">
         {{ showTerms ? 'Hide' : 'View' }} Terms and Conditions
       </button>
 
-      <div v-show="showTerms" class="p-3 bg-light border rounded small text-muted">
+      <div v-show="showTerms" class="p-3 bg-light border rounded small text-muted mt-3">
         By submitting this application, you agree that all information provided is accurate and true
         to the best of your knowledge. You understand that false statements may result in
         disqualification from the hiring process. You also consent to Insight Hire processing your
@@ -95,6 +77,7 @@ import { reactive, ref, computed } from 'vue'
 import FieldsetPersonal from './FieldsetPersonal.vue'
 import FieldsetAccount from './FieldsetAccount.vue'
 import FieldsetAddress from './FieldsetAddress.vue'
+import FieldsetPreferences from './FieldsetPreferences.vue'
 
 //-----------------------------------------------
 // STATE MANAGEMENT
@@ -202,16 +185,25 @@ const validateField = (field) => {
       break
 
     case 'postcode':
-      if (!val) errors.postcode = 'Postcode is required.'
-      else if (!/^\d{4}$/.test(val)) errors.postcode = 'Postcode must be exactly 4 digits.'
-      else errors.postcode = ''
+      if (!val) {
+        errors.postcode = 'Postcode is required.'
+      } else if (!/^\d{4}$/.test(val)) {
+        errors.postcode = 'Must be exactly 4 numeric digits.'
+      } else {
+        errors.postcode = ''
+      }
       break
 
     case 'mobile':
-      if (!val) errors.mobile = 'Mobile number is required.'
-      else if (!/^04\d{8}$/.test(val))
-        errors.mobile = "Mobile must be exactly 10 digits and start with '04'."
-      else errors.mobile = ''
+      if (!val) {
+        errors.mobile = 'Mobile number is required.'
+      }
+      // Strictly checks that the user entered exactly 8 numbers (no letters or symbols)
+      else if (!/^\d{8}$/.test(val)) {
+        errors.mobile = 'Please enter exactly 8 numeric digits.'
+      } else {
+        errors.mobile = ''
+      }
       break
 
     case 'dob':

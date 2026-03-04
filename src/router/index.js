@@ -43,7 +43,11 @@ const router = createRouter({
         },
       ],
     },
-    // We will add the routes for the Application Form and To-Do List here later!
+    {
+      path: '/apply',
+      name: 'job-application',
+      component: () => import('../modules/applications/views/ApplicationView.vue'),
+    },
   ],
 })
 
