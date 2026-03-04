@@ -14,7 +14,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
 // We can also import our own global CSS if we have any overrides
-import './assets/main.css'
+import './assets/css/main.css'
 
 const app = createApp(App)
 

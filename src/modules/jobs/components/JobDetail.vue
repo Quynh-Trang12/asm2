@@ -25,7 +25,7 @@
           <p class="mb-1"><strong>Supervisor:</strong> {{ job.supervisor }}</p>
           <p class="mb-1"><strong>Start Date:</strong> {{ job.start_date }}</p>
           <p class="mb-1">
-            <strong>Application Deadline:</strong>
+            <strong>Application Deadline: </strong>
             <span class="text-danger fw-bold">{{ job.application_deadline }}</span>
           </p>
         </div>
