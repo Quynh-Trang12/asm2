@@ -32,7 +32,6 @@ const { jobs } = useJobs()
 .transition-all {
   transition: all 0.2s ease-in-out;
 }
-/* Subtly separate the overview link from the job list */
 .list-group-item.bg-light {
   border-bottom: 2px solid #e9ecef !important;
 }

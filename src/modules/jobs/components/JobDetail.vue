@@ -24,38 +24,62 @@
       <section class="row g-3 mb-5">
         <div class="col-12 col-md-6 col-lg-4">
           <div class="p-3 bg-light rounded border h-100">
-            <p class="mb-1 small text-muted text-uppercase fw-bold tracking-wide">Salary Range</p>
-            <p class="mb-0 fw-medium text-dark">{{ job.salary_range }}</p>
+            <p
+              class="mb-1 small text-muted text-uppercase fw-bold tracking-wide responsive-heading"
+            >
+              Salary Range
+            </p>
+            <p class="mb-0 fw-medium text-dark responsive-text">{{ job.salary_range }}</p>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
           <div class="p-3 bg-light rounded border h-100">
-            <p class="mb-1 small text-muted text-uppercase fw-bold tracking-wide">Job Level</p>
-            <p class="mb-0 fw-medium text-dark">{{ job.job_level }}</p>
+            <p
+              class="mb-1 small text-muted text-uppercase fw-bold tracking-wide responsive-heading"
+            >
+              Job Level
+            </p>
+            <p class="mb-0 fw-medium text-dark responsive-text">{{ job.job_level }}</p>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
           <div class="p-3 bg-light rounded border h-100">
-            <p class="mb-1 small text-muted text-uppercase fw-bold tracking-wide">Positions</p>
-            <p class="mb-0 fw-medium text-dark">{{ job.positions_available }}</p>
+            <p
+              class="mb-1 small text-muted text-uppercase fw-bold tracking-wide responsive-heading"
+            >
+              Positions
+            </p>
+            <p class="mb-0 fw-medium text-dark responsive-text">{{ job.positions_available }}</p>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
           <div class="p-3 bg-light rounded border h-100">
-            <p class="mb-1 small text-muted text-uppercase fw-bold tracking-wide">Supervisor</p>
-            <p class="mb-0 fw-medium text-dark">{{ job.supervisor }}</p>
+            <p
+              class="mb-1 small text-muted text-uppercase fw-bold tracking-wide responsive-heading"
+            >
+              Supervisor
+            </p>
+            <p class="mb-0 fw-medium text-dark responsive-text">{{ job.supervisor }}</p>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
           <div class="p-3 bg-light rounded border h-100">
-            <p class="mb-1 small text-muted text-uppercase fw-bold tracking-wide">Start Date</p>
-            <p class="mb-0 fw-medium text-dark">{{ job.start_date }}</p>
+            <p
+              class="mb-1 small text-muted text-uppercase fw-bold tracking-wide responsive-heading"
+            >
+              Start Date
+            </p>
+            <p class="mb-0 fw-medium text-dark responsive-text">{{ job.start_date }}</p>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
           <div class="p-3 bg-light rounded border border-primary-subtle h-100">
-            <p class="mb-1 small text-primary text-uppercase fw-bold tracking-wide">Deadline</p>
-            <p class="mb-0 fw-bold text-dark">{{ job.application_deadline }}</p>
+            <p
+              class="mb-1 small text-primary text-uppercase fw-bold tracking-wide responsive-heading"
+            >
+              Deadline
+            </p>
+            <p class="mb-0 fw-bold text-dark responsive-text">{{ job.application_deadline }}</p>
           </div>
         </div>
       </section>
@@ -134,5 +158,15 @@ const job = computed(() => {
 }
 .tracking-wide {
   letter-spacing: 0.05em;
+}
+
+/* RESPONSIVE TYPOGRAPHY FOR TABLETS */
+@media (max-width: 991.98px) {
+  .responsive-text {
+    font-size: 0.9rem; /* Shrinks the text slightly to prevent awkward line breaks */
+  }
+  .responsive-heading {
+    font-size: 0.75rem;
+  }
 }
 </style>
