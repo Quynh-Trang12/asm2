@@ -24,7 +24,7 @@
  * @description Main layout view. Strictly handles the page grid.
  */
 
-import JobList from '../components/JobList.vue'
+import JobList from '../components/jobs/JobList.vue'
 </script>
 
 <style scoped>
