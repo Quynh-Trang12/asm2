@@ -4,14 +4,20 @@
     class="job-list-item list-group-item list-group-item-action p-3 transition-all"
     active-class="active shadow-sm border-primary text-white"
   >
-    <h6 class="mb-1 fw-bold">{{ job.job_id }} - {{ job.job_title }}</h6>
+    <h6 class="mb-1 fw-bold text-truncate" :title="`${job.job_id} - ${job.job_title}`">
+      {{ job.job_id }} - {{ job.job_title }}
+    </h6>
 
-    <div class="d-flex justify-content-between align-items-center mt-2">
-      <small :class="$route.params.id === job.job_id ? 'text-white' : 'text-secondary'">
+    <div class="d-flex justify-content-between align-items-center mt-2 gap-2">
+      <small
+        class="text-truncate"
+        :class="$route.params.id === job.job_id ? 'text-white' : 'text-secondary'"
+        :title="job.company"
+      >
         {{ job.company }}
       </small>
       <span
-        class="badge"
+        class="badge text-nowrap"
         :class="$route.params.id === job.job_id ? 'bg-light text-primary' : 'bg-primary'"
       >
         {{ job.employment_type }}

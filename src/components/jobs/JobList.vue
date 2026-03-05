@@ -6,7 +6,7 @@
       exact-active-class="active shadow-sm"
     >
       <div class="d-flex align-items-center">
-        <h6 class="mb-0 fw-bold w-100">← Job Overview</h6>
+        <h6 class="mb-0 fw-bold w-100">Overview</h6>
       </div>
     </router-link>
 

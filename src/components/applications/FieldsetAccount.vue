@@ -73,6 +73,11 @@
 </template>
 
 <script setup>
+/**
+ * @file FieldsetAccount.vue
+ * @description Encapsulates the Account Details section of the application form.
+ */
+
 //-----------------------------------------------
 // STATE & EMITS
 //-----------------------------------------------

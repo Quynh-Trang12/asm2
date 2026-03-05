@@ -56,8 +56,6 @@
 </script>
 
 <style>
-/* Global styles can go here, but Bootstrap handles most of what we need.
-   We keep it clean! */
 body {
   background-color: #f8f9fa; /* Very light gray to make white cards pop */
 }

@@ -57,6 +57,11 @@
 </template>
 
 <script setup>
+/**
+ * @file FieldsetPersonal.vue
+ * @description Encapsulates the Personal Information section of the application form.
+ */
+
 //-----------------------------------------------
 // STATE & EMITS
 //-----------------------------------------------

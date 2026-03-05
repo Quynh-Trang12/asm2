@@ -93,6 +93,11 @@
 </template>
 
 <script setup>
+/**
+ * @file FieldsetAddress.vue
+ * @description Encapsulates the Address & Contact section of the application form.
+ */
+
 //-----------------------------------------------
 // STATE & EMITS
 //-----------------------------------------------

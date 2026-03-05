@@ -114,13 +114,13 @@ const validateField = (field, value, formState) => {
   // Clear the error for this field before re-evaluating
   delete errors[field]
 
-  // 1. Check if the field is empty
+  // Check if the field is empty
   if (!value || (typeof value === 'string' && !value.trim())) {
     errors[field] = 'This field is required.'
     return
   }
 
-  // 2. Apply specific RegEx rules based on the field name
+  // Apply specific RegEx rules based on the field name
   switch (field) {
     case 'firstName':
     case 'lastName':

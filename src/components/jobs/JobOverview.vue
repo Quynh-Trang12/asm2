@@ -1,22 +1,27 @@
 <template>
-  <article class="job-overview card shadow-sm flex-grow-1">
+  <article class="job-overview card shadow-sm">
     <div class="card-body p-4 p-md-5">
       <h2 class="card-title text-primary mb-4 fw-bold">Job Overview</h2>
 
       <p class="card-text lead text-secondary">
         Insight Hire connects passionate individuals with exciting opportunities in the fields of
-        Artificial Intelligence, Data Science, Cybersecurity, and Software Development...
+        Artificial Intelligence, Data Science, Cybersecurity, and Software Development. Our platform
+        showcases roles from top tech companies, research labs, and innovation hubs, offering
+        intemships, part-time, and full- time positions tailored for emerging talent and experienced
+        professionals alike.
+        <br />
+        <br />
+        Whether you're a student looking to break into the tech industry, a researcher alming to
+        apply machine learning in real-world contexts, or a developer seeking your next challenge.
+        Insight Hire helps you find roles that match your skills and aspirations. Each job posting
+        includes detailed descriptions, required skills, company background, and application
+        deadlines, so you can make informed decisions about your career path.
+        <br />
+        <br />
+        Our team is dedicated to promoting meaningfull employment by highlighting roles that provide
+        mentorship, skill development, and long-term impact. Explore the job list on the left to
+        view details of each opportunity, and start building your future today.
       </p>
-
-      <p class="card-text mt-3">
-        Whether you're a student looking to break into the tech industry, a researcher aiming to
-        apply machine learning in real-world contexts, or a developer seeking your next challenge...
-      </p>
-
-      <div class="alert alert-primary mt-4 mb-0" role="alert">
-        Our team is dedicated to promoting meaningful employment by highlighting roles that provide
-        mentorship, skill development, and long-term impact...
-      </div>
     </div>
   </article>
 </template>
