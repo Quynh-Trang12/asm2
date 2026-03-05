@@ -1,5 +1,5 @@
 <template>
-  <article v-if="job" class="job-detail card shadow-sm border-0 h-100">
+  <article v-if="job" class="job-detail card shadow-sm border-0 flex-grow-1">
     <div class="card-body p-4 p-md-5">
       <header class="mb-4 pb-4 border-bottom">
         <h2 class="card-title text-primary fw-bold mb-2">
@@ -123,7 +123,11 @@
     </div>
   </article>
 
-  <div v-else class="alert alert-danger d-flex align-items-center p-4 shadow-sm h-100" role="alert">
+  <div
+    v-else
+    class="alert alert-danger d-flex align-items-center p-4 shadow-sm flex-grow-1"
+    role="alert"
+  >
     <div>
       <h5 class="alert-heading fw-bold mb-2">Position Not Found</h5>
       <p class="mb-0">
