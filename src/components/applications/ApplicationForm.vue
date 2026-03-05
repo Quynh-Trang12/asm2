@@ -5,6 +5,7 @@
     @submit="validateAndSubmit"
     class="application-form bg-white p-4 p-md-5 rounded shadow-sm border"
     novalidate
+    autocomplete="on"
   >
     <FieldsetPersonal
       v-model:firstName="form.firstName"
