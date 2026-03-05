@@ -39,10 +39,10 @@
     />
 
     <div class="mb-4 p-3 border rounded bg-white">
-      <button type="button" class="btn btn-outline-secondary btn-sm mb-2" @click="toggleTerms">
+      <button type="button" class="btn btn-outline-secondary btn-sm" @click="toggleTerms">
         {{ showTerms ? 'Hide' : 'View' }} Terms and Conditions
       </button>
-      <div v-show="showTerms" class="p-3 bg-light border rounded small text-muted">
+      <div v-show="showTerms" class="p-3 bg-light border rounded small text-muted mt-2">
         By submitting this application, you agree that all information provided is accurate and true
         to the best of your knowledge.
       </div>
