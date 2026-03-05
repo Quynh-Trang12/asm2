@@ -1,5 +1,5 @@
 <template>
-  <article v-if="job" class="job-detail card shadow-sm border-0">
+  <article v-if="job" class="job-detail card shadow-sm border-0 h-100">
     <div class="card-body p-4 p-md-5">
       <header class="mb-4 pb-4 border-bottom">
         <h2 class="card-title text-primary fw-bold mb-2">
@@ -22,37 +22,37 @@
       </header>
 
       <section class="row g-3 mb-5">
-        <div class="col-6 col-md-4">
+        <div class="col-12 col-md-6 col-lg-4">
           <div class="p-3 bg-light rounded border h-100">
             <p class="mb-1 small text-muted text-uppercase fw-bold tracking-wide">Salary Range</p>
             <p class="mb-0 fw-medium text-dark">{{ job.salary_range }}</p>
           </div>
         </div>
-        <div class="col-6 col-md-4">
+        <div class="col-12 col-md-6 col-lg-4">
           <div class="p-3 bg-light rounded border h-100">
             <p class="mb-1 small text-muted text-uppercase fw-bold tracking-wide">Job Level</p>
             <p class="mb-0 fw-medium text-dark">{{ job.job_level }}</p>
           </div>
         </div>
-        <div class="col-6 col-md-4">
+        <div class="col-12 col-md-6 col-lg-4">
           <div class="p-3 bg-light rounded border h-100">
             <p class="mb-1 small text-muted text-uppercase fw-bold tracking-wide">Positions</p>
             <p class="mb-0 fw-medium text-dark">{{ job.positions_available }}</p>
           </div>
         </div>
-        <div class="col-6 col-md-4">
+        <div class="col-12 col-md-6 col-lg-4">
           <div class="p-3 bg-light rounded border h-100">
             <p class="mb-1 small text-muted text-uppercase fw-bold tracking-wide">Supervisor</p>
             <p class="mb-0 fw-medium text-dark">{{ job.supervisor }}</p>
           </div>
         </div>
-        <div class="col-6 col-md-4">
+        <div class="col-12 col-md-6 col-lg-4">
           <div class="p-3 bg-light rounded border h-100">
             <p class="mb-1 small text-muted text-uppercase fw-bold tracking-wide">Start Date</p>
             <p class="mb-0 fw-medium text-dark">{{ job.start_date }}</p>
           </div>
         </div>
-        <div class="col-6 col-md-4">
+        <div class="col-12 col-md-6 col-lg-4">
           <div class="p-3 bg-light rounded border border-primary-subtle h-100">
             <p class="mb-1 small text-primary text-uppercase fw-bold tracking-wide">Deadline</p>
             <p class="mb-0 fw-bold text-dark">{{ job.application_deadline }}</p>
@@ -99,7 +99,7 @@
     </div>
   </article>
 
-  <div v-else class="alert alert-danger d-flex align-items-center p-4 shadow-sm" role="alert">
+  <div v-else class="alert alert-danger d-flex align-items-center p-4 shadow-sm h-100" role="alert">
     <div>
       <h5 class="alert-heading fw-bold mb-2">Position Not Found</h5>
       <p class="mb-0">
