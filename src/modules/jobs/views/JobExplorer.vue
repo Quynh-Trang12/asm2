@@ -6,9 +6,8 @@
           <div class="card-header bg-primary text-white py-3">
             <h5 class="mb-0 fw-bold fs-6">Available Positions</h5>
           </div>
-          <div class="list-group list-group-flush">
-            <JobListItem v-for="job in jobs" :key="job.job_id" :job="job" />
-          </div>
+
+          <JobList />
         </div>
       </aside>
 
@@ -22,17 +21,10 @@
 <script setup>
 /**
  * @file JobExplorer.vue
- * @description Main layout for the Jobs module. Now utilizes composables and micro-components.
+ * @description Main layout view. Strictly handles the page grid.
  */
 
-// Import the micro-component
-import JobListItem from '../components/JobListItem.vue'
-
-// Import our new composable instead of the raw service
-import { useJobs } from '../../../composables/useJobs.js'
-
-// Destructure the jobs array perfectly from the logic layer
-const { jobs } = useJobs()
+import JobList from '../components/JobList.vue'
 </script>
 
 <style scoped>
