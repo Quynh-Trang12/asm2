@@ -26,7 +26,7 @@
  */
 
 // Import the ApplicationForm component
-import ApplicationForm from '../components/ApplicationForm.vue'
+import ApplicationForm from '../components/applications/ApplicationForm.vue'
 </script>
 
 <style scoped>

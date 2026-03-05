@@ -28,19 +28,43 @@
 /**
  * @file TodoList.vue
  * @description The "Smart Parent" orchestrating the To-Do List functionality.
+ * The logic has been refactored directly into the component using Vue's Composition API.
  */
 
+import { ref } from 'vue'
 import TodoInput from './TodoInput.vue'
 import TodoItem from './TodoItem.vue'
 
-// Import our business logic layer
-import { useTodos } from '../../../composables/useTodos.js'
+//-----------------------------------------------
+// STATE & LOGIC
+//-----------------------------------------------
 
-//-----------------------------------------------
-// STATE & LOGIC BINDING
-//-----------------------------------------------
-// Destructure exactly what we need from the composable
-const { tasks, addTask, deleteTask, togglePriority } = useTodos()
+// Reactive array to hold our tasks
+const tasks = ref([])
+
+// Adds a new task to the beginning of the array
+const addTask = (taskText) => {
+  if (!taskText || !taskText.trim()) return
+
+  tasks.value.unshift({
+    id: Date.now(), // Simple way to generate a unique ID
+    text: taskText,
+    isHighPriority: false, // Default to Low Priority based on standard behavior
+  })
+}
+
+// Removes a task by its ID
+const deleteTask = (id) => {
+  tasks.value = tasks.value.filter((task) => task.id !== id)
+}
+
+// Toggles the priority of a specific task
+const togglePriority = (id) => {
+  const task = tasks.value.find((task) => task.id === id)
+  if (task) {
+    task.isHighPriority = !task.isHighPriority
+  }
+}
 </script>
 
 <style scoped>

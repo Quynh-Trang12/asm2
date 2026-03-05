@@ -21,7 +21,7 @@
  */
 
 import JobListItem from './JobListItem.vue'
-import jobs from '../../assets/data/jobs.js'
+import { jobsData as jobs } from '../../assets/data/jobs.js'
 </script>
 
 <style scoped>

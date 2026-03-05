@@ -20,7 +20,7 @@
  * @file ToDosView.vue
  * @description The main page layout for the To-Do List feature.
  */
-import TodoList from '../components/TodoList.vue'
+import TodoList from '../components/todos/TodoList.vue'
 </script>
 
 <style scoped>

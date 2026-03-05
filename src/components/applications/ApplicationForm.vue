@@ -65,11 +65,11 @@
 <script setup>
 /**
  * @file ApplicationForm.vue
- * @description The ultimate "Smart Parent". It manages state and delegates validation
- * to the useValidation composable, leaving the UI exceptionally clean.
+ * @description The ultimate "Smart Parent". It manages state and handles validation
+ * internally using standard Vue Composition API and centralized RegEx patterns.
  */
 
-import { reactive, ref } from 'vue'
+import { reactive, ref, computed } from 'vue'
 
 // Import UI Modules
 import FieldsetPersonal from './FieldsetPersonal.vue'
@@ -77,8 +77,8 @@ import FieldsetAccount from './FieldsetAccount.vue'
 import FieldsetAddress from './FieldsetAddress.vue'
 import FieldsetPreferences from './FieldsetPreferences.vue'
 
-// Import Logic Layer
-import { useValidation } from '../../../composables/useValidation.js'
+// Import Centralized RegEx Rules from the new constants folder
+import { REGEX } from '../../constants/regex.js'
 
 //-----------------------------------------------
 // STATE MANAGEMENT
@@ -102,15 +102,73 @@ const showTerms = ref(false)
 const hasSubmissionAttempted = ref(false)
 const isSuccess = ref(false)
 
-// Extract state and methods from our composable
-const { errors, hasErrors, validateField, validateAll } = useValidation()
+// Validation State
+const errors = reactive({})
+const hasErrors = computed(() => Object.keys(errors).length > 0)
 
 //-----------------------------------------------
-// LOGIC
+// VALIDATION LOGIC
+//-----------------------------------------------
+
+const validateField = (field, value, formState) => {
+  // Clear the error for this field before re-evaluating
+  delete errors[field]
+
+  // 1. Check if the field is empty
+  if (!value || (typeof value === 'string' && !value.trim())) {
+    errors[field] = 'This field is required.'
+    return
+  }
+
+  // 2. Apply specific RegEx rules based on the field name
+  switch (field) {
+    case 'firstName':
+    case 'lastName':
+      if (!REGEX.ALPHA_ONLY.test(value)) {
+        errors[field] = 'Must contain letters only.'
+      }
+      break
+    case 'email':
+      if (!REGEX.EMAIL.test(value)) {
+        errors[field] = 'Please enter a valid email address.'
+      }
+      break
+    case 'password':
+      if (!REGEX.PASSWORD_SPECIAL_CHAR.test(value)) {
+        errors[field] = 'Must contain at least one special character ($%^&*).'
+      }
+      break
+    case 'confirmPassword':
+      if (value !== formState.password) {
+        errors[field] = 'Passwords do not match.'
+      }
+      break
+    case 'postcode':
+      if (!REGEX.NUMERIC_EXACT_4.test(value)) {
+        errors[field] = 'Postcode must be exactly 4 digits.'
+      }
+      break
+    case 'mobile':
+      if (!REGEX.NUMERIC_EXACT_8.test(value)) {
+        errors[field] = 'Mobile suffix must be exactly 8 digits.'
+      }
+      break
+  }
+}
+
+const validateAll = (formState) => {
+  // Loop through every field in the form and run the validation
+  Object.keys(formState).forEach((field) => {
+    validateField(field, formState[field], formState)
+  })
+}
+
+//-----------------------------------------------
+// UI INTERACTION LOGIC
 //-----------------------------------------------
 const toggleTerms = () => (showTerms.value = !showTerms.value)
 
-// Wrapper function to pass the current value and the whole form state into the composable
+// Wrapper function called by child fieldsets on blur/input
 const handleValidate = (field) => {
   validateField(field, form[field], form)
 }
@@ -119,14 +177,14 @@ const validateAndSubmit = (event) => {
   hasSubmissionAttempted.value = true
   isSuccess.value = false
 
-  // Run all logic through the composable
+  // Trigger full form validation
   validateAll(form)
 
   if (hasErrors.value) {
     event.preventDefault()
     window.scrollTo({ top: 0, behavior: 'smooth' })
   } else {
-    // Vercel deployment fix
+    // Prevent default form submission to mercury server during local Vercel test
     event.preventDefault()
     isSuccess.value = true
     console.log('Form perfectly validated!', form)

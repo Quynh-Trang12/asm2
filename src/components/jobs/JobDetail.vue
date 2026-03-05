@@ -141,18 +141,20 @@
 <script setup>
 /**
  * @file JobDetail.vue
- * @description Displays the full details of a specific job, powered by the useJobs composable.
+ * @description Displays the full details of a specific job by importing
+ * directly from the hard-coded data file.
  */
 
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { useJobs } from '../../../composables/useJobs.js'
+// 1. Import the jobs array directly from your new assets folder
+import { jobsData as jobs } from '../../assets/data/jobs.js'
 
 const route = useRoute()
-const { getJobById } = useJobs()
 
+// 2. Replace the old getJobById function with a standard JavaScript array .find()
 const job = computed(() => {
-  return getJobById(route.params.id)
+  return jobs.find((j) => j.job_id === route.params.id)
 })
 </script>
 
