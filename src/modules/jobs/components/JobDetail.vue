@@ -70,27 +70,19 @@
 <script setup>
 /**
  * @file JobDetail.vue
- * @description Displays the full details of a specific job.
- * It reactively responds to route parameter changes to fetch the correct data.
+ * @description Displays the full details of a specific job, powered by the useJobs composable.
  */
 
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { jobService } from '../../../services/jobService.js'
+import { useJobs } from '../../../composables/useJobs.js' // NEW
 
-// useRoute gives us access to the current URL parameters
 const route = useRoute()
+const { getJobById } = useJobs() // NEW
 
-/**
- * We use a computed property here instead of a static variable.
- * Why? If the user is viewing MLA101 and clicks DSC202 on the sidebar,
- * the component doesn't destroy and recreate itself; only the URL changes.
- * 'computed' watches the route.params.id and automatically re-fetches the
- * correct job whenever the ID changes!
- */
 const job = computed(() => {
-  // Pass the ID from the URL (e.g., 'MLA101') to our service layer
-  return jobService.getJobById(route.params.id)
+  // Delegate the logic to our composable
+  return getJobById(route.params.id)
 })
 </script>
 
