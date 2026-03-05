@@ -1,67 +1,110 @@
 <template>
   <article v-if="job" class="job-detail card shadow-sm border-0">
     <div class="card-body p-4 p-md-5">
-      <header class="mb-4 border-bottom pb-3">
-        <h2 class="card-title text-primary fw-bold mb-1">
+      <header class="mb-4 pb-4 border-bottom">
+        <h2 class="card-title text-primary fw-bold mb-2">
           {{ job.job_title }}
-          <span class="text-muted fs-5">({{ job.job_id }})</span>
+          <span class="text-muted fs-5 fw-normal">({{ job.job_id }})</span>
         </h2>
-        <h5 class="text-secondary mb-3">{{ job.company }}</h5>
+        <h5 class="text-secondary mb-4">{{ job.company }}</h5>
 
         <div class="d-flex flex-wrap gap-2">
-          <span class="badge bg-info text-dark">{{ job.category }}</span>
-          <span class="badge bg-secondary">{{ job.employment_type }}</span>
-          <span class="badge bg-light text-dark border">{{ job.location }}</span>
+          <span class="badge bg-light text-secondary border px-3 py-2 fw-medium">{{
+            job.category
+          }}</span>
+          <span class="badge bg-light text-secondary border px-3 py-2 fw-medium">{{
+            job.employment_type
+          }}</span>
+          <span class="badge bg-light text-secondary border px-3 py-2 fw-medium">{{
+            job.location
+          }}</span>
         </div>
       </header>
 
-      <section class="row mb-4">
-        <div class="col-md-6 mb-3 mb-md-0">
-          <p class="mb-1"><strong>Salary Range:</strong> {{ job.salary_range }}</p>
-          <p class="mb-1"><strong>Job Level:</strong> {{ job.job_level }}</p>
-          <p class="mb-1"><strong>Positions Available:</strong> {{ job.positions_available }}</p>
+      <section class="row g-3 mb-5">
+        <div class="col-6 col-md-4">
+          <div class="p-3 bg-light rounded border h-100">
+            <p class="mb-1 small text-muted text-uppercase fw-bold tracking-wide">Salary Range</p>
+            <p class="mb-0 fw-medium text-dark">{{ job.salary_range }}</p>
+          </div>
         </div>
-        <div class="col-md-6">
-          <p class="mb-1"><strong>Supervisor:</strong> {{ job.supervisor }}</p>
-          <p class="mb-1"><strong>Start Date:</strong> {{ job.start_date }}</p>
-          <p class="mb-1">
-            <strong>Application Deadline: </strong>
-            <span class="text-danger fw-bold">{{ job.application_deadline }}</span>
-          </p>
+        <div class="col-6 col-md-4">
+          <div class="p-3 bg-light rounded border h-100">
+            <p class="mb-1 small text-muted text-uppercase fw-bold tracking-wide">Job Level</p>
+            <p class="mb-0 fw-medium text-dark">{{ job.job_level }}</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="p-3 bg-light rounded border h-100">
+            <p class="mb-1 small text-muted text-uppercase fw-bold tracking-wide">Positions</p>
+            <p class="mb-0 fw-medium text-dark">{{ job.positions_available }}</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="p-3 bg-light rounded border h-100">
+            <p class="mb-1 small text-muted text-uppercase fw-bold tracking-wide">Supervisor</p>
+            <p class="mb-0 fw-medium text-dark">{{ job.supervisor }}</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="p-3 bg-light rounded border h-100">
+            <p class="mb-1 small text-muted text-uppercase fw-bold tracking-wide">Start Date</p>
+            <p class="mb-0 fw-medium text-dark">{{ job.start_date }}</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="p-3 bg-light rounded border border-primary-subtle h-100">
+            <p class="mb-1 small text-primary text-uppercase fw-bold tracking-wide">Deadline</p>
+            <p class="mb-0 fw-bold text-dark">{{ job.application_deadline }}</p>
+          </div>
         </div>
       </section>
 
       <section>
-        <h5 class="fw-bold mt-4">Description</h5>
-        <p class="card-text text-secondary line-height-lg">{{ job.job_description }}</p>
+        <h5 class="fw-bold text-dark mb-3">Description</h5>
+        <p class="card-text text-secondary line-height-lg mb-5">{{ job.job_description }}</p>
 
-        <h5 class="fw-bold mt-4">Required Skills</h5>
-        <ul class="list-inline mb-3">
-          <li v-for="skill in job.required_skills" :key="skill" class="list-inline-item">
-            <span class="badge bg-primary rounded-pill px-3">{{ skill }}</span>
+        <h5 class="fw-bold text-dark mb-3">Required Skills</h5>
+        <ul class="list-inline mb-5">
+          <li v-for="skill in job.required_skills" :key="skill" class="list-inline-item mb-2">
+            <span
+              class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 rounded-pill px-3 py-2 fw-medium"
+            >
+              {{ skill }}
+            </span>
           </li>
         </ul>
 
-        <h5 class="fw-bold mt-4">Preferred Qualifications</h5>
-        <ul class="list-inline">
-          <li v-for="qual in job.preferred_qualifications" :key="qual" class="list-inline-item">
-            <span class="badge bg-success rounded-pill px-3">{{ qual }}</span>
+        <h5 class="fw-bold text-dark mb-3">Preferred Qualifications</h5>
+        <ul class="list-inline mb-4">
+          <li
+            v-for="qual in job.preferred_qualifications"
+            :key="qual"
+            class="list-inline-item mb-2"
+          >
+            <span
+              class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 rounded-pill px-3 py-2 fw-medium"
+            >
+              {{ qual }}
+            </span>
           </li>
         </ul>
       </section>
 
-      <footer class="mt-5 text-end">
-        <router-link to="/apply" class="btn btn-primary px-4 py-2 fw-bold"> Apply Now </router-link>
+      <footer class="mt-5 pt-4 border-top text-end">
+        <router-link to="/apply" class="btn btn-primary px-5 py-2 fw-bold shadow-sm">
+          Apply for this Position
+        </router-link>
       </footer>
     </div>
   </article>
 
-  <div v-else class="alert alert-danger d-flex align-items-center" role="alert">
+  <div v-else class="alert alert-danger d-flex align-items-center p-4 shadow-sm" role="alert">
     <div>
-      <h4 class="alert-heading">Job Not Found</h4>
+      <h5 class="alert-heading fw-bold mb-2">Position Not Found</h5>
       <p class="mb-0">
-        We couldn't find a job matching the ID in the URL. Please select a valid job from the list
-        on the left.
+        We couldn't find a job matching the ID in the URL. Please select a valid position from the
+        list on the left.
       </p>
     </div>
   </div>
@@ -75,24 +118,21 @@
 
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { useJobs } from '../../../composables/useJobs.js' // NEW
+import { useJobs } from '../../../composables/useJobs.js'
 
 const route = useRoute()
-const { getJobById } = useJobs() // NEW
+const { getJobById } = useJobs()
 
 const job = computed(() => {
-  // Delegate the logic to our composable
   return getJobById(route.params.id)
 })
 </script>
 
 <style scoped>
 .line-height-lg {
-  line-height: 1.7;
+  line-height: 1.8;
 }
-/* A subtle hover effect on badges makes the UI feel interactive */
-.badge {
-  font-size: 0.85em;
-  padding: 0.5em 0.75em;
+.tracking-wide {
+  letter-spacing: 0.05em;
 }
 </style>

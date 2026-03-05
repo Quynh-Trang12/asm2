@@ -1,12 +1,13 @@
 <template>
   <router-link
     :to="`/jobs/${job.job_id}`"
-    class="job-list-item list-group-item list-group-item-action p-3 p-md-4 transition-all"
-    active-class="active shadow-sm border-primary"
+    class="job-list-item list-group-item list-group-item-action p-3 transition-all"
+    active-class="active shadow-sm border-primary text-white"
   >
-    <h6 class="mb-1 fw-bold">{{ job.job_title }}</h6>
+    <h6 class="mb-1 fw-bold">{{ job.job_id }} - {{ job.job_title }}</h6>
+
     <div class="d-flex justify-content-between align-items-center mt-2">
-      <small :class="$route.params.id === job.job_id ? 'text-white-50' : 'text-muted'">
+      <small :class="$route.params.id === job.job_id ? 'text-white' : 'text-secondary'">
         {{ job.company }}
       </small>
       <span
