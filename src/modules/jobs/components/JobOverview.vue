@@ -1,5 +1,5 @@
 <template>
-  <article class="job-overview card shadow-sm">
+  <article class="job-overview card shadow-sm h-100">
     <div class="card-body p-4 p-md-5">
       <h2 class="card-title text-primary mb-4 fw-bold">Job Overview</h2>
 
@@ -38,16 +38,11 @@
 </script>
 
 <style scoped>
-/* Adding a thicker top border gives the card a polished, "enterprise" feel.
-  This is a common design pattern in modern web applications.
-*/
 .job-overview {
   border: none;
-  border-top: 5px solid #0d6efd; /* Matches Bootstrap's primary blue */
+  border-top: 5px solid #0d6efd;
   border-radius: 0.5rem;
 }
-
-/* Subtle line-height adjustment for better readability */
 .card-text {
   line-height: 1.7;
 }
